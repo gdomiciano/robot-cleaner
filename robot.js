@@ -9,34 +9,37 @@
       this.steps.forEach(step => {
         switch(Object.keys(step)[0]) {
           case 'N':
-            this.updatePath('y', +1);
+            this.updatePath('y', +1, Object.values(step)[0]);
             break;
           case 'E':
-            this.updatePath('x', +1);
+            this.updatePath('x', +1, Object.values(step)[0]);
             break;
           case 'S':
-            this.updatePath('y', -1);
+            this.updatePath('y', -1, Object.values(step)[0]);
             break;
           default:
-            this.updatePath('x', -1);
+            this.updatePath('x', -1, Object.values(step)[0]);
             break;
         };
       });
     },
-    updatePath: function (direction, step) {
-      console.log("called update", direction, step)
+    updatePath: function (direction, stepPosition, totalSteps) {
+      console.log("called update", direction, stepPosition)
       const currentPath = this.path;
       const lastPosition = currentPath[currentPath.length-1];
       let newPosition = {};
-      if (direction === 'x'){
-        newPosition = {
-          x:lastPosition.x + step,
-          y:lastPosition.y,
-        }
-      } else {
-        newPosition = {
-          x:lastPosition.x,
-          y:lastPosition.y + step,
+
+      for( let i; i < totalSteps){
+        if (direction === 'x'){
+          newPosition = {...newPosition,
+            x:lastPosition.x + stepPosition,
+            y:lastPosition.y,
+          }
+        } else {
+          newPosition = {...newPosition,
+            x:lastPosition.x,
+            y:lastPosition.y + stepPosition,
+          }
         }
       }
       // console.log(newPosition);
