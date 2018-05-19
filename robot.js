@@ -24,28 +24,28 @@
       });
     },
     updatePath: function (direction, stepPosition, totalSteps) {
-      console.log("called update", direction, stepPosition)
       const currentPath = this.path;
       const lastPosition = currentPath[currentPath.length-1];
-      let newPosition = {};
-
-      for( let i; i < totalSteps){
+      console.log(totalSteps);
+      for(let i = 0; i < totalSteps; i++){
         if (direction === 'x'){
-          newPosition = {...newPosition,
+          this.addPosition({
             x:lastPosition.x + stepPosition,
             y:lastPosition.y,
-          }
+          });
         } else {
-          newPosition = {...newPosition,
+          this.addPosition({
             x:lastPosition.x,
             y:lastPosition.y + stepPosition,
-          }
+          });
         }
       }
-      // console.log(newPosition);
-      return currentPath.push(newPosition);
     },
-    unique: () => {
+    addPosition(newPosition) {
+      console.log(newPosition);
+      this.path.push(newPosition);
+    },
+    countUnique: () => {
       console.log(this.path.length);
     }
   }
