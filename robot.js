@@ -45,12 +45,13 @@
       console.log(newPosition);
       this.path.push(newPosition);
     },
-    countUnique: () => {
-      console.log(this.path.length);
+    countUnique: function() {
+      const unique = new Set(this.path);
+      console.log(unique);
     }
   }
 
   robot.clean()
-
+  robot.countUnique()
 
 // }
