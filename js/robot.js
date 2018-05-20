@@ -1,13 +1,13 @@
 {
 
-    "use strict";
+    'use strict';
 
     const robot = {
-        "defineInputs" () {
+        'defineInputs' () {
 
-            this.commands = document.getElementById("commands").value;
-            this.coordinates = document.getElementById("coordinates").value;
-            this.steps = document.getElementById("where-to").value;
+            this.commands = document.getElementById('commands').value;
+            this.coordinates = document.getElementById('coordinates').value;
+            this.steps = document.getElementById('where-to').value;
             this.path = [this.coordinates];
 
         },
@@ -18,19 +18,19 @@
 
         },
 
-        "handleSteps" (direction, step, totalSteps) {
+        'handleSteps' (direction, step, totalSteps) {
 
             const currentPath = this.path;
             let lastPosition = currentPath[currentPath.length - 1];
 
-            lastPosition = lastPosition.split(" ");
+            lastPosition = lastPosition.split(' ');
 
             let lastXPosition = parseInt(lastPosition[0]);
             let lastYPosition = parseInt(lastPosition[1]);
 
             for (let i = 0; i < totalSteps; i++) {
 
-                if (direction === "x") {
+                if (direction === 'x') {
 
                     lastXPosition += step;
                     this.addPositionToPath(lastXPosition, lastYPosition);
@@ -46,9 +46,9 @@
 
         },
 
-        "handleDirections" () {
+        'handleDirections' () {
 
-            const stepsArray = this.steps.split(" ");
+            const stepsArray = this.steps.split(' ');
 
             stepsArray.forEach((step) => {
 
@@ -57,17 +57,17 @@
 
                 switch (direction) {
 
-                case "N":
-                    this.handleSteps("y", -1, totalSteps);
+                case 'N':
+                    this.handleSteps('y', -1, totalSteps);
                     break;
-                case "E":
-                    this.handleSteps("x", +1, totalSteps);
+                case 'E':
+                    this.handleSteps('x', +1, totalSteps);
                     break;
-                case "S":
-                    this.handleSteps("y", +1, totalSteps);
+                case 'S':
+                    this.handleSteps('y', +1, totalSteps);
                     break;
                 default:
-                    this.handleSteps("x", -1, totalSteps);
+                    this.handleSteps('x', -1, totalSteps);
                     break;
 
                 }
@@ -76,19 +76,19 @@
 
         },
 
-        "updateStatus" (statusMessage) {
+        'updateStatus' (statusMessage) {
 
-            document.querySelector(".status").textContent = statusMessage;
-
-        },
-
-        "showOutput" (numberOfPlaces) {
-
-            document.querySelector(".count-status").textContent = `Cleaned: ${numberOfPlaces}`;
+            document.querySelector('.status').textContent = statusMessage;
 
         },
 
-        "countUniquePlaces" () {
+        'showOutput' (numberOfPlaces) {
+
+            document.querySelector('.count-status').textContent = `Cleaned: ${numberOfPlaces}`;
+
+        },
+
+        'countUniquePlaces' () {
 
             const unique = new Set(this.path);
 
@@ -99,20 +99,20 @@
 
     function init () {
 
-        const inputForm = document.querySelector(".instructions-form");
-        const countButton = document.querySelector(".show-unique");
+        const inputForm = document.querySelector('.instructions-form');
+        const countButton = document.querySelector('.show-unique');
 
-        inputForm.addEventListener("submit", (e) => {
+        inputForm.addEventListener('submit', (e) => {
 
             e.preventDefault();
             robot.defineInputs();
-            robot.updateStatus("Cleaning...");
+            robot.updateStatus('Cleaning...');
             robot.handleDirections();
-            robot.updateStatus("Done!");
+            robot.updateStatus('Done!');
 
         });
 
-        countButton.addEventListener("click", robot.countUniquePlaces.bind(robot));
+        countButton.addEventListener('click', robot.countUniquePlaces.bind(robot));
 
     }
 
