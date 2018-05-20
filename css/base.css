@@ -1,0 +1,44 @@
+body{
+  font-family: Arial, helvetica, sans-serif;
+}
+
+.instructions-form,
+.status {
+  text-align: center;
+}
+
+.label {
+  display: block;
+}
+
+.field,
+.button {
+  border-radius: 5px;
+  display: block;
+  width: 50%;
+  margin: 0 auto 15px;
+
+}
+
+.field {
+  line-height: 30px;
+  font-size: 16px;
+}
+
+.button {
+  font-size: 16px;
+  height: 40px;
+}
+
+.submit {
+  background-color: lightblue;
+}
+
+.show-unique {
+  background-color: lightgreen;
+}
+
+.status {
+  font-size: 20px;
+  font-weight: bold;
+}

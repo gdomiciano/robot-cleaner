@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Robot Cleaner</title>
+  <link rel="stylesheet" href="./css/base.css">
+</head>
+<body>
+  <form class="instructions-form">
+    <label for="commands" class="label">Number of commands:</label>
+    <input type="number" id="commands" class="field" required placeholder="5" min="1" max="10000">
+
+    <label for="coordinates" class="label">Initial position:</label>
+    <input type="text" id="coordinates" class="field" required placeholder="10 22">
+
+    <label for="coordinates" class="label">Directions:</label>
+    <input type="text" id="where-to" class="field" required placeholder="e2 n1 s100 w40">
+
+    <input type="submit" id="clean" class="button submit" value="Clean!">
+  </form>
+
+  <p class="status"></p>
+  <hr/>
+
+  <button class="button show-unique">how many unique places?</button>
+  <p class="status count-status"></p>
+
+  <script src="./js/robot.js"></script>
+</body>
+</html>
